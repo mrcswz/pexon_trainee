@@ -1,0 +1,25 @@
+#Ansible Playbook by Marco Schwarz
+
+---
+- hosts: nginx
+  tasks:
+   - name: Install nginx
+     remote_user: linux02
+     yum:
+       name: nginx
+       state: present
+   - name: Copy nginx configuration for Wordpress
+     template:
+      src: index.nginx-debian.html
+      dest: /var/www/html/index.nginx-debian.html
+      service: 
+       name: nginx
+       state: restarted
+   - name: Create directory
+     file:
+      path: /home/linux02/Desktop/test
+      state: directory
+   - name: Copy testfile
+     template:
+      src: testdoc
+      dest: /home/linux02/Desktop/test/testdoc
