@@ -1,0 +1,8 @@
+- name: Check if Testfile exists
+  stat:
+    path: /home/linux02/Desktop/test/testdoc
+  register: stat_result
+
+- name: File exists
+  meta: end_play
+  when: stat_result.stat.exists == true

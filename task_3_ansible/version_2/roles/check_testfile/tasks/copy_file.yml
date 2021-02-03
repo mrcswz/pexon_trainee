@@ -1,0 +1,11 @@
+- name: Copy file
+  block:
+    - name: Create directory
+      file:
+        path: /home/linux02/Desktop/test
+        state: directory
+    - name: Copy testfile
+      template:
+        src: testdoc
+        dest: /home/linux02/Desktop/test/testdoc
+  when: stat_result.stat.exists == false

@@ -1,0 +1,9 @@
+#Ansible Playbook by Marco Schwarz
+
+---
+- hosts: nginx
+  tasks:
+  remote_user: linux02
+  roles:
+    - install_nginx
+    - check_testfile
